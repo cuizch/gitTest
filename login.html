@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <span>用户名： </span>
+        <input type="text" id="username">
+        <br>
+        <span>密码：</span>
+        <input type="password" id="pwd">
+        <br>
+        <input type="button" id="login-btn" value="登录按钮">
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $('#login-btn').on('click', function () {
+            // 获取输入框的值
+            var username = $('#username').val();
+            var password = $('#pwd').val();
+            // 发起网络请求
+            $.post("http://localhost:8888/login", {
+                username: username,
+                pwd: password,
+            }, function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+</html>
